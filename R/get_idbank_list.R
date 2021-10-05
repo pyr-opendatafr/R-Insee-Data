@@ -184,7 +184,7 @@ get_idbank_list = function(
 
       }else{
 
-        today_date = as.character(lubridate::today())
+        today_date = as.character(Sys.Date())
         saveRDS(idbank_list, file = metadata_file_cache)
         saveRDS(today_date, file = metadata_file_cache_date)
 
