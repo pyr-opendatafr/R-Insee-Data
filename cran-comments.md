@@ -1,7 +1,6 @@
 ## Purpose
 
-* maintainer's address change
-* new features (see NEWS)
+* quick fix : remove lubridate as dependency to avoid archiving
 
 ## Test environments
 

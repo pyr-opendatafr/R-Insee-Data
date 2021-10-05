@@ -1,3 +1,7 @@
+# insee 1.1.2
+
+* remove lubridate as dependency
+
 # insee 1.1.1
 
 * package maintainer's email address change
