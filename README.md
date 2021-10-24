@@ -28,7 +28,7 @@ This package is a contribution to reproducible research and public data transpar
 ``` r
 # Get the development version from GitHub
 # install.packages("devtools")
-# devtools::install_github("InseeFr/R-Insee-Data")
+# devtools::install_github("pyr-opendatafr/R-Insee-Data")
 
 # Get the CRAN version
 install.packages("insee")
