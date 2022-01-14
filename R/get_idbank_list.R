@@ -12,7 +12,12 @@
 #' all the data is returned, and column names refer directly to data dimensions
 #' @param update It is FALSE by default, if it is set to TRUE, it triggers the metadata update. This update is automatically triggered once every 6 months.
 #' @examples
-#' \donttest{idbank_list = get_idbank_list()}
+#' \donttest{
+#' # download datasets list
+#' dt = get_dataset_list()
+#' # use a dataset name to retrieve the series key list related to the dataset
+#' idbank_list = get_idbank_list('CNT-2014-PIB-EQB-RF')
+#' }
 #' @return a tibble the idbank dataset
 #' @export
 get_idbank_list = function(
