@@ -10,29 +10,14 @@ download_idbank_list = function(dataset = NULL, label = FALSE){
     insee_local_dir = tempdir()
   }
 
-  # insee_download_verbose = if(Sys.getenv("INSEE_download_verbose") == "TRUE"){TRUE}else{FALSE}
-  insee_download_option_idbank_list = Sys.getenv("INSEE_download_option_idbank_list")
   file_to_dwn = Sys.getenv("INSEE_idbank_dataset_path")
-  mapping_file_pattern = Sys.getenv("INSEE_idbank_dataset_file")
-
-  mapping_file_sep = Sys.getenv("INSEE_idbank_sep")
-
-  temp_file = tempfile()
-
+  
   idbank_list_file_cache = file.path(insee_data_dir,
                                  paste0(openssl::md5(file_to_dwn), ".rds"))
 
  if(!file.exists(idbank_list_file_cache)){
 
-   dwn = utils::download.file(file_to_dwn, temp_file,
-                              mode = insee_download_option_idbank_list, quiet = TRUE)
-
-   uzp = utils::unzip(temp_file, exdir = insee_data_dir)
-
-   mapping_file = file.path(insee_data_dir, list.files(insee_data_dir, pattern = mapping_file_pattern)[1])
-   # load data
-   mapping = utils::read.delim(mapping_file, sep = mapping_file_sep,
-                               stringsAsFactors = F)
+   mapping = dwn_idbank_files()
 
    mapping = mapping[,c(1:3)]
    names(mapping) = c("nomflow", "idbank", "cleFlow")
