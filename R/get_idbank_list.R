@@ -173,10 +173,14 @@ get_idbank_list = function(
       idbank_list = try(download_idbank_list(), silent = TRUE)
 
       if("try-error" %in% class(idbank_list)){
-
-        idbank_list = clean_table(
-          dplyr::filter(.data = idbank_list_internal, .data$nomflow %in% dataset)
-        )
+        
+        if(!is.null(dataset)){
+          idbank_list = clean_table(
+            dplyr::filter(.data = idbank_list_internal, .data$nomflow %in% dataset)
+          )
+        }else{
+          idbank_list = idbank_list_internal
+        }
 
         msg1 = "\n\nIdbank list download failed"
         msg2 = "\nPackage's internal data has been used instead"
