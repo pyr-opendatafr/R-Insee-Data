@@ -30,5 +30,10 @@ Sys.setenv(INSEE_idbank_sep = ",")
 Sys.setenv(INSEE_idbank_dataset_file = "new_data_file_name")
 }
 \examples{
-\donttest{idbank_list = get_idbank_list()}
+\donttest{
+# download datasets list
+dt = get_dataset_list()
+# use a dataset name to retrieve the series key list related to the dataset
+idbank_list = get_idbank_list('CNT-2014-PIB-EQB-RF')
+}
 }
