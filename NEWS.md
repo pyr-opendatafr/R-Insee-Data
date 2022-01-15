@@ -1,3 +1,9 @@
+# insee 1.1.3
+
+* idbank list url change
+* loop on potential series (idbank) list urls on insee.fr - improved backup
+* small bug fix in add_insee_metadata
+
 # insee 1.1.2
 
 * remove lubridate as dependency
