@@ -181,5 +181,7 @@ test_that("output tests",{
 
   # delete all remaining files
   # clean_insee_folder()
+  r_folder = file.path(rappdirs::user_data_dir(), "R")
+  unlink(r_folder, recursive = TRUE)
 })
 
