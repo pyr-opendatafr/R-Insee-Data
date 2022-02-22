@@ -1,3 +1,8 @@
+# insee 1.1.4
+
+* advanced proxy settings are set up
+* idbank list disseminated is not filtered and comes directly from insee.fr
+
 # insee 1.1.3
 
 * idbank list url change
