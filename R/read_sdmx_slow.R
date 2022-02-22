@@ -4,7 +4,25 @@ read_sdmx_slow = function(link, step = "1/1"){
 
   insee_download_verbose = if(Sys.getenv("INSEE_download_verbose") == "TRUE"){TRUE}else{FALSE}
 
-  response = try(httr::GET(link), silent = TRUE)
+  option_mode = Sys.getenv("INSEE_download_option_mode")
+  option_method = Sys.getenv("INSEE_download_option_method")
+  option_port = Sys.getenv("INSEE_download_option_port")
+  option_extra = Sys.getenv("INSEE_download_option_extra")
+  option_proxy = Sys.getenv("INSEE_download_option_proxy")
+  option_auth = Sys.getenv("INSEE_download_option_auth")
+  
+  if(option_extra == ""){
+    response = try(httr::GET(link), silent = TRUE)
+  }else{
+    
+    proxy = httr::use_proxy(url = option_proxy,
+                            port = as.numeric(option_port),
+                            auth = option_auth)
+    
+    response = httr::GET(url = link,
+                       config = proxy)
+  }
+  
 
   if("try-error" %in% class(response)){
     # warning("Wrong query")

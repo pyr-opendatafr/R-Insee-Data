@@ -5,13 +5,28 @@ dwn_idbank_file = function(){
   temp_file = tempfile()
   insee_data_dir = tempdir()
   
-  insee_download_option_idbank_list = Sys.getenv("INSEE_download_option_idbank_list")
   file_to_dwn = Sys.getenv("INSEE_idbank_dataset_path")
   mapping_file_pattern = Sys.getenv("INSEE_idbank_dataset_file")
   mapping_file_sep = Sys.getenv("INSEE_idbank_sep")
   
-  dwn = utils::download.file(file_to_dwn, temp_file,
-                             mode = insee_download_option_idbank_list, quiet = TRUE)
+  option_mode = Sys.getenv("INSEE_download_option_mode")
+  option_method = Sys.getenv("INSEE_download_option_method")
+  option_port = Sys.getenv("INSEE_download_option_port")
+  option_extra = Sys.getenv("INSEE_download_option_extra")
+  option_proxy = Sys.getenv("INSEE_download_option_proxy")
+  option_auth = Sys.getenv("INSEE_download_option_auth")
+  
+  if (option_extra == ""){
+    dwn = utils::download.file(file_to_dwn, temp_file,
+                               mode = option_mode, quiet = TRUE)
+  }else{
+    dwn = utils::download.file(file_to_dwn, temp_file,
+                               method = option_method,
+                               mode = option_mode,
+                               extra = option_extra,
+                               quiet = TRUE)
+  }
+  
   
   uzp = utils::unzip(temp_file, exdir = insee_data_dir)
   
