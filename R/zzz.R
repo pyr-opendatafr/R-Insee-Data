@@ -10,7 +10,7 @@
 
   Sys.setenv(INSEE_idbank_sep = ";")
   Sys.setenv(INSEE_idbank_dataset_path = "https://www.insee.fr/en/statistiques/fichier/2868055/202202_correspondance_idbank_dimension.zip")
-  Sys.setenv(INSEE_idbank_dataset_file = "202201_correspondance_idbank_dimension")
+  Sys.setenv(INSEE_idbank_dataset_file = "202202_correspondance_idbank_dimension")
 
   Sys.setenv(INSEE_last_release_link = "https://bdm.insee.fr/series/sdmx/rss/donnees")
   Sys.setenv(INSEE_idbank_nchar = 9)
