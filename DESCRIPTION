@@ -38,6 +38,6 @@ Suggests:
     testthat,
     covr,
     png
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Depends: 
     R (>= 2.10)

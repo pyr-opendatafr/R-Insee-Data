@@ -59,6 +59,18 @@ Sys.setenv(http_proxy = "my_proxy_server")
 Sys.setenv(https_proxy = "my_proxy_server")
 ```
 
+<center><font color="red"> **Requirement for DG TRESOR employees**</font></center>
+
+In order for someone working behind a proxy server to be able to use [insee](https://CRAN.R-project.org/package=insee), it is necessary to modify system variables as follow.
+
+```{r, message = FALSE, warning = FALSE, eval = FALSE}
+Sys.setenv(INSEE_download_option_method = "mymethod")
+Sys.setenv(INSEE_download_option_port = "1234")
+Sys.setenv(INSEE_download_option_extra = "-U : --proxy-myprotocol --proxy myproxy:1234")
+Sys.setenv(INSEE_download_option_proxy = "myproxy")
+Sys.setenv(INSEE_download_option_auth = "myprotocol")
+```
+
 ## Installation & Loading
 
 You can easily install [insee](https://CRAN.R-project.org/package=insee) with the following code :
