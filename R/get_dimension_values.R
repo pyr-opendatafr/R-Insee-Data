@@ -32,20 +32,20 @@ get_dimension_values = function(dimension, col_name ,name = FALSE){
     option_extra = Sys.getenv("INSEE_download_option_extra")
     option_proxy = Sys.getenv("INSEE_download_option_proxy")
     option_auth = Sys.getenv("INSEE_download_option_auth")
-    
+
     if(option_extra == ""){
       response = try(httr::GET(link), silent = TRUE)
     }else{
-      
+
       proxy = httr::use_proxy(url = option_proxy,
                               port = as.numeric(option_port),
                               auth = option_auth)
-      
+
       response = httr::GET(url = link,
                            config = proxy)
     }
 
-    if(class(response) != "try-error"){
+    if(!"try-error" %in% class(response)){
 
         response_content = try(httr::content(response, encoding = "UTF-8"), silent = TRUE)
 
@@ -55,7 +55,7 @@ get_dimension_values = function(dimension, col_name ,name = FALSE){
           data = tibble::as_tibble(content_list)
           data_code = try(data[[1]][[2]][["Codelists"]][["Codelist"]], silent = TRUE)
 
-          if(class(data_code) != "try-error"){
+          if(!"try-error" %in% class(data_code)){
 
             code_element = which(names(data_code) == "Code")
             name_element = which(names(data_code) == "Name")
@@ -72,10 +72,10 @@ get_dimension_values = function(dimension, col_name ,name = FALSE){
                   dimension_label_fr = try(data_name[[2]][[1]], silent = TRUE)
                   dimension_label_en = try(data_name[[1]][[1]], silent = TRUE)
                 }
-                if(class(dimension_label_fr) == "try-error"){
+                if("try-error" %in% class(dimension_label_fr)){
                   dimension_label_fr = "Missing"
                 }
-                if(class(dimension_label_en) == "try-error"){
+                if("try-error" %in% class(dimension_label_en)){
                   dimension_label_en = "Missing"
                 }
                 dimension_name = data.frame(dimension = col_name,
@@ -108,10 +108,10 @@ get_dimension_values = function(dimension, col_name ,name = FALSE){
                     label_en = try(data_code[[i]][[1]][[1]], silent = TRUE)
                   }
 
-                  if(class(label_fr) == "try-error"){
+                  if("try-error" %in% class(label_fr)){
                     label_fr = "Missing"
                   }
-                  if(class(label_en) == "try-error"){
+                  if("try-error" %in% class(label_en)){
                     label_en = "Missing"
                   }
 
