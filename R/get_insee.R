@@ -94,6 +94,10 @@ get_insee = function(link, step = "1/1"){
 
     }else{
       msg = "An error occurred"
+      msg = paste0(msg, "\n\nIf a work computer is used, a proxy server may prevent this package from accessing the internet")
+      msg = paste0(msg, "\nIn this case, please ask your IT support team to provide you with the proxy server settings")
+      msg = paste0(msg, "\nThen, have a look at the following tutorial to use these settings:\n")
+      msg = paste0(msg, "https://cran.r-project.org/web/packages/insee/vignettes/insee.html")
       message(crayon::style(msg, "red"))
     }
   }else{
