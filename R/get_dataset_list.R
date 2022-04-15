@@ -25,6 +25,12 @@ get_dataset_list = function(){
         df = df[-which(df$id == "SERIES_BDM"),]
       }
     }
+  }else{
+    df = dataset_list_internal
+    msg1 = "\n\nDataset list download failed"
+    msg2 = "\nPackage's internal data has been used instead"
+    msg3 = "\nPlease contact the package maintainer if this error persists"
+    warning(sprintf("%s %s %s", msg1, msg2, msg3))
   }
 
   # df = tibble::as_tibble(df)
