@@ -36,6 +36,12 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown", type = "binary")
+          install.packages("raster")
+          install.packages("rgdal")
+          install.packages("geosphere")
+          install.packages("broom")
+          install.packages("viridis")
+          install.packages("mapproj")
         shell: Rscript {0}
 
       - name: Install package
