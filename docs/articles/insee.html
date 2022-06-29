@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">insee</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.4</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/insee.html">Get started</a>
 </li>
@@ -50,7 +46,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -82,8 +78,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/pyr-opendatafr/R-Insee-Data/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/pyr-opendatafr/R-Insee-Data/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -97,88 +93,135 @@
 
       
 
-      </header><link href="insee_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="insee_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Tutorial</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/pyr-opendatafr/R-Insee-Data/blob/master/vignettes/insee.Rmd"><code>vignettes/insee.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/pyr-opendatafr/R-Insee-Data/blob/HEAD/vignettes/insee.Rmd" class="external-link"><code>vignettes/insee.Rmd</code></a></small>
       <div class="hidden name"><code>insee.Rmd</code></div>
 
     </div>
 
     
     
-<div id="introduction" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>The <a href="https://CRAN.R-project.org/package=insee">insee</a> package gathers tools to easily download data and metadata from <a href="https://www.insee.fr/en/information/2512785">insee BDM database</a>.</p>
-<p>It uses SDMX queries under the hood. Have a look at the detailed <a href="https://www.insee.fr/en/information/2868055">SDMX webservice page</a>.</p>
-<p>The first version of the package was published on CRAN 2020-07-29.</p>
-<div id="proxy-issues" class="section level2">
-<h2 class="hasAnchor">
-<a href="#proxy-issues" class="anchor"></a>Proxy issues</h2>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>The <a href="https://CRAN.R-project.org/package=insee" class="external-link">insee</a>
+package gathers tools to easily download data and metadata from <a href="https://www.insee.fr/en/information/2512785" class="external-link">insee BDM
+database</a>.</p>
+<p>It uses SDMX queries under the hood. Have a look at the detailed <a href="https://www.insee.fr/en/information/2868055" class="external-link">SDMX webservice
+page</a>.</p>
+<p>The first version of the package was published on CRAN
+2020-07-29.</p>
+<div class="section level3">
+<h3 id="proxy-issues">Proxy issues<a class="anchor" aria-label="anchor" href="#proxy-issues"></a>
+</h3>
 <center>
-<font color="red"> <strong>Requirement for INSEE employees</strong></font>
+<font color="red"> <strong>Requirement for INSEE
+employees</strong></font>
 </center>
-<p>In order for someone working behind a proxy server to be able to use <a href="https://CRAN.R-project.org/package=insee">insee</a>, it is necessary to modify system variables as follow.</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>http_proxy <span class="op">=</span> <span class="st">"my_proxy_server"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>https_proxy <span class="op">=</span> <span class="st">"my_proxy_server"</span><span class="op">)</span></code></pre></div>
+<p>In order for someone working behind a proxy server to be able to use
+<a href="https://CRAN.R-project.org/package=insee" class="external-link">insee</a>, it is
+necessary to modify system variables as follow.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>http_proxy <span class="op">=</span> <span class="st">"my_proxy_server"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>https_proxy <span class="op">=</span> <span class="st">"my_proxy_server"</span><span class="op">)</span></code></pre></div>
+<center>
+<font color="red"> <strong>Requirement for DG TRESOR
+employees</strong></font>
+</center>
+<p>In order for someone working behind a proxy server to be able to use
+<a href="https://CRAN.R-project.org/package=insee" class="external-link">insee</a>, it is
+necessary to modify system variables as follow.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>INSEE_download_option_method <span class="op">=</span> <span class="st">"mymethod"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>INSEE_download_option_port <span class="op">=</span> <span class="st">"1234"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>INSEE_download_option_extra <span class="op">=</span> <span class="st">"-U : --proxy-myprotocol --proxy myproxy:1234"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>INSEE_download_option_proxy <span class="op">=</span> <span class="st">"myproxy"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>INSEE_download_option_auth <span class="op">=</span> <span class="st">"myprotocol"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="installation-loading" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation-loading" class="anchor"></a>Installation &amp; Loading</h2>
-<p>You can easily install <a href="https://CRAN.R-project.org/package=insee">insee</a> with the following code :</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="installation-loading">Installation &amp; Loading<a class="anchor" aria-label="anchor" href="#installation-loading"></a>
+</h3>
+<p>You can easily install <a href="https://CRAN.R-project.org/package=insee" class="external-link">insee</a> with the
+following code :</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Get the development version from GitHub </span>
 <span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"InseeFr/R-Insee-Data"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"InseeFr/R-Insee-Data"</span><span class="op">)</span>
 
 <span class="co"># CRAN version</span>
 <span class="co"># install.packages("insee")</span>
 
 <span class="co"># library Loading</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://pyr-opendatafr.github.io/R-Insee-Data/">insee</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pyr-opendatafr.github.io/R-Insee-Data/">insee</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="functionalities" class="section level1">
-<h1 class="hasAnchor">
-<a href="#functionalities" class="anchor"></a>Functionalities</h1>
-<p>This section will give you an overview of what you can do with <a href="https://CRAN.R-project.org/package=insee">insee</a>.</p>
-<p>Series have two identifiers the SDMX identifier and the so called idbank. Both can be used to download data.</p>
-<div id="datasets-list" class="section level2">
-<h2 class="hasAnchor">
-<a href="#datasets-list" class="anchor"></a>Datasets List</h2>
-<p><a href="https://www.insee.fr/en/information/2512785">INSEE BDM database</a> offers more than 200 Datasets. The <code><a href="../reference/get_dataset_list.html">get_dataset_list()</a></code> function returns the datasets catalogue :</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<div class="section level2">
+<h2 id="functionalities">Functionalities<a class="anchor" aria-label="anchor" href="#functionalities"></a>
+</h2>
+<p>This section will give you an overview of what you can do with <a href="https://CRAN.R-project.org/package=insee" class="external-link">insee</a>.</p>
+<p>Series have two identifiers the SDMX identifier and the so called
+idbank. Both can be used to download data.</p>
+<div class="section level3">
+<h3 id="datasets-list">Datasets List<a class="anchor" aria-label="anchor" href="#datasets-list"></a>
+</h3>
+<p><a href="https://www.insee.fr/en/information/2512785" class="external-link">INSEE BDM
+database</a> offers more than 200 Datasets. The
+<code><a href="../reference/get_dataset_list.html">get_dataset_list()</a></code> function returns the datasets catalogue
+:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">insee_dataset</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_dataset_list.html">get_dataset_list</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
 </div>
-<div id="series-keys-list" class="section level2">
-<h2 class="hasAnchor">
-<a href="#series-keys-list" class="anchor"></a>Series Keys List</h2>
-<p><a href="https://www.insee.fr/en/information/2512785">INSEE BDM database</a> currently offers more than 150 000 series. The <code>get_idbank_list</code> function returns the series catalogue from a dataset name.</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="series-keys-list">Series Keys List<a class="anchor" aria-label="anchor" href="#series-keys-list"></a>
+</h3>
+<p><a href="https://www.insee.fr/en/information/2512785" class="external-link">INSEE BDM
+database</a> currently offers more than 150 000 series. The
+<code>get_idbank_list</code> function returns the series catalogue from
+a dataset name.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">idbank_list</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_idbank_list.html">get_idbank_list</a></span><span class="op">(</span><span class="st">'BALANCE-PAIEMENTS'</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="find-a-series-key" class="section level2">
-<h2 class="hasAnchor">
-<a href="#find-a-series-key" class="anchor"></a>Find a series key</h2>
-<p>The best way to download data is to find the right series key (idbank), but how ? Indeed, in some cases it is not easy to understand what are the differences among series, especially for non-French speakers. To make the search easier, the best way is to use the <code>get_idbank_list</code> function with a dataset name, then it can be helpful to filter with the columns FREQ, NATURE, UNIT etc. Moreover, the <a href="https://CRAN.R-project.org/package=insee">insee</a> package provides the function <code>add_insee_title</code> to get titles from idbanks, either in English or in French. It is not advised to use the function on the whole idbank dataset, as each SDMX query has 400-idbank limit. Then, <code>add_insee_title</code> function splits the list into several lists of 400 idbanks each. Thus, the user should filter the idbank dataset before using the function to avoid as much as possible this bottleneck as the following example shows. After the data retrieval, it is really nice to use the <code>split_title</code> function on the dataframe to get more readable titles easy to use in plots and <code>add_insee_metadata</code> to get the metadata with the data.</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="find-a-series-key">Find a series key<a class="anchor" aria-label="anchor" href="#find-a-series-key"></a>
+</h3>
+<p>The best way to download data is to find the right series key
+(idbank), but how ? Indeed, in some cases it is not easy to understand
+what are the differences among series, especially for non-French
+speakers. To make the search easier, the best way is to use the
+<code>get_idbank_list</code> function with a dataset name, then it can
+be helpful to filter with the columns FREQ, NATURE, UNIT etc. Moreover,
+the <a href="https://CRAN.R-project.org/package=insee" class="external-link">insee</a> package
+provides the function <code>add_insee_title</code> to get titles from
+idbanks, either in English or in French. It is not advised to use the
+function on the whole idbank dataset, as each SDMX query has 400-idbank
+limit. Then, <code>add_insee_title</code> function splits the list into
+several lists of 400 idbanks each. Thus, the user should filter the
+idbank dataset before using the function to avoid as much as possible
+this bottleneck as the following example shows. After the data
+retrieval, it is really nice to use the <code>split_title</code>
+function on the dataframe to get more readable titles easy to use in
+plots and <code>add_insee_metadata</code> to get the metadata with the
+data.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">idbank_list_selected</span> <span class="op">=</span>
-  <span class="fu"><a href="../reference/get_idbank_list.html">get_idbank_list</a></span><span class="op">(</span><span class="st">"IPI-2015"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">#industrial production index dataset</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">FREQ</span> <span class="op">==</span> <span class="st">"M"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">#monthly</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">NATURE</span> <span class="op">==</span> <span class="st">"INDICE"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">#index</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">CORRECTION</span> <span class="op">==</span> <span class="st">"CVS-CJO"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">#Working day and seasonally adjusted SA-WDA</span>
+  <span class="fu"><a href="../reference/get_idbank_list.html">get_idbank_list</a></span><span class="op">(</span><span class="st">"IPI-2015"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">#industrial production index dataset</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">FREQ</span> <span class="op">==</span> <span class="st">"M"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">#monthly</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">NATURE</span> <span class="op">==</span> <span class="st">"INDICE"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">#index</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">CORRECTION</span> <span class="op">==</span> <span class="st">"CVS-CJO"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co">#Working day and seasonally adjusted SA-WDA</span>
   <span class="co">#automotive industry and overall industrial production</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">str_detect</span><span class="op">(</span><span class="va">NAF2</span>,<span class="st">"^29$|A10-BE"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">NAF2</span>,<span class="st">"^29$|A10-BE"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/add_insee_title.html">add_insee_title</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>Another way to find a series key is to perform a keyword-based search with the function <code>search_insee</code>. Beware that this function uses package internal data which might not be the most up-to-date. See the following examples :</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<p>Another way to find a series key is to perform a keyword-based search
+with the function <code>search_insee</code>. Beware that this function
+uses package internal data which might not be the most up-to-date. See
+the following examples :</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># search multiple patterns</span>
 <span class="va">dataset_survey_gdp</span> <span class="op">=</span> <span class="fu"><a href="../reference/search_insee.html">search_insee</a></span><span class="op">(</span><span class="st">"Survey|gdp"</span><span class="op">)</span>
 
@@ -188,37 +231,40 @@
 <span class="co"># all data</span>
 <span class="va">data_all</span> <span class="op">=</span> <span class="fu"><a href="../reference/search_insee.html">search_insee</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="download-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#download-data" class="anchor"></a>Download data</h2>
-<div id="download-using-a-list-of-idbanks" class="section level3">
-<h3 class="hasAnchor">
-<a href="#download-using-a-list-of-idbanks" class="anchor"></a>Download using a list of idbanks</h3>
-<p>The <code>get_insee_idbank</code> function should handle up to 1200 idbanks. It is then advised to narrow down the idbanks list used as argument of the function. Otherwise, put the limit argument to FALSE to ignore the function's idbank limit.</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://pyr-opendatafr.github.io/R-Insee-Data/">insee</a></span><span class="op">)</span>
+<div class="section level3">
+<h3 id="download-data">Download data<a class="anchor" aria-label="anchor" href="#download-data"></a>
+</h3>
+<div class="section level4">
+<h4 id="download-using-a-list-of-idbanks">Download using a list of idbanks<a class="anchor" aria-label="anchor" href="#download-using-a-list-of-idbanks"></a>
+</h4>
+<p>The <code>get_insee_idbank</code> function should handle up to 1200
+idbanks. It is then advised to narrow down the idbanks list used as
+argument of the function. Otherwise, put the limit argument to FALSE to
+ignore the function’s idbank limit.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pyr-opendatafr.github.io/R-Insee-Data/">insee</a></span><span class="op">)</span>
 
 <span class="co"># the user can make a manual list of idbanks to get the data </span>
 <span class="co"># example 1</span>
 
 <span class="va">data</span> <span class="op">=</span> 
-  <span class="fu"><a href="../reference/get_insee_idbank.html">get_insee_idbank</a></span><span class="op">(</span><span class="st">"001558315"</span>, <span class="st">"010540726"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/get_insee_idbank.html">get_insee_idbank</a></span><span class="op">(</span><span class="st">"001558315"</span>, <span class="st">"010540726"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/add_insee_metadata.html">add_insee_metadata</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co"># using a list of idbanks extracted from the insee idbank dataset</span>
 <span class="co"># example 2 : household's confidence survey</span>
 
 <span class="va">df_idbank</span> <span class="op">=</span> 
-  <span class="fu"><a href="../reference/get_idbank_list.html">get_idbank_list</a></span><span class="op">(</span><span class="st">"ENQ-CONJ-MENAGES"</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co">#monthly households' confidence survey</span>
-  <span class="fu"><a href="../reference/add_insee_title.html">add_insee_title</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">CORRECTION</span> <span class="op">==</span> <span class="st">"CVS"</span><span class="op">)</span> <span class="co">#seasonally adjusted</span>
+  <span class="fu"><a href="../reference/get_idbank_list.html">get_idbank_list</a></span><span class="op">(</span><span class="st">"ENQ-CONJ-MENAGES"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>  <span class="co">#monthly households' confidence survey</span>
+  <span class="fu"><a href="../reference/add_insee_title.html">add_insee_title</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">CORRECTION</span> <span class="op">==</span> <span class="st">"CVS"</span><span class="op">)</span> <span class="co">#seasonally adjusted</span>
 
-<span class="va">list_idbank</span> <span class="op">=</span> <span class="va">df_idbank</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">idbank</span><span class="op">)</span>
+<span class="va">list_idbank</span> <span class="op">=</span> <span class="va">df_idbank</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">idbank</span><span class="op">)</span>
 
 <span class="va">data</span> <span class="op">=</span> 
-  <span class="fu"><a href="../reference/get_insee_idbank.html">get_insee_idbank</a></span><span class="op">(</span><span class="va">list_idbank</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/split_title.html">split_title</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/get_insee_idbank.html">get_insee_idbank</a></span><span class="op">(</span><span class="va">list_idbank</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/split_title.html">split_title</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/add_insee_metadata.html">add_insee_metadata</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co"># example 3 : get more than 1200 idbanks</span>
@@ -226,18 +272,19 @@
 <span class="va">idbank_dataset</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_idbank_list.html">get_idbank_list</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">df_idbank</span> <span class="op">=</span> 
-  <span class="va">idbank_dataset</span> <span class="op">%&gt;%</span>
-  <span class="fu">slice</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">1201</span><span class="op">)</span>
+  <span class="va">idbank_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">1201</span><span class="op">)</span>
 
-<span class="va">list_idbank</span> <span class="op">=</span> <span class="va">df_idbank</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">idbank</span><span class="op">)</span>
+<span class="va">list_idbank</span> <span class="op">=</span> <span class="va">df_idbank</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">idbank</span><span class="op">)</span>
 
 <span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_insee_idbank.html">get_insee_idbank</a></span><span class="op">(</span><span class="va">list_idbank</span>, firstNObservations <span class="op">=</span> <span class="fl">1</span>, limit <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="download-using-a-dataset-name" class="section level3">
-<h3 class="hasAnchor">
-<a href="#download-using-a-dataset-name" class="anchor"></a>Download using a dataset name</h3>
-<p>For some datasets as IPC-2015 (inflation), the filter is necessary.</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
+<div class="section level4">
+<h4 id="download-using-a-dataset-name">Download using a dataset name<a class="anchor" aria-label="anchor" href="#download-using-a-dataset-name"></a>
+</h4>
+<p>For some datasets as IPC-2015 (inflation), the filter is
+necessary.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">insee_dataset</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_dataset_list.html">get_dataset_list</a></span><span class="op">(</span><span class="op">)</span> 
 
 <span class="co"># example 1 : full dataset</span>
@@ -259,22 +306,29 @@
 </div>
 </div>
 </div>
-<div id="examples" class="section level1">
-<h1 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h1>
+<div class="section level2">
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2>
 <ul>
-<li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v2_gdp-vignettes.html">GDP growth rate</a></li>
+<li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v2_gdp-vignettes.html">GDP
+growth rate</a></li>
 <li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v3_inflation-vignettes.html">Inflation</a></li>
-<li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v4_unem-vignettes.html">Unemployment rate</a></li>
-<li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v5_pop-vignettes.html">Population by age</a></li>
-<li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v6_pop_map-vignettes.html">Population map</a></li>
-<li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v7_death_birth-vignettes.html">Deaths and Births</a></li>
+<li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v4_unem-vignettes.html">Unemployment
+rate</a></li>
+<li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v5_pop-vignettes.html">Population
+by age</a></li>
+<li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v6_pop_map-vignettes.html">Population
+map</a></li>
+<li><a href="https://pyr-opendatafr.github.io/R-Insee-Data/articles/v7_death_birth-vignettes.html">Deaths
+and Births</a></li>
 </ul>
 </div>
-<div id="support" class="section level1">
-<h1 class="hasAnchor">
-<a href="#support" class="anchor"></a>Support</h1>
-<p>Feel free to open an issue with any question about this package using <a href="https://github.com/pyr-opendatafr/R-Insee-Data" class="uri">https://github.com/pyr-opendatafr/R-Insee-Data</a> Github repository</p>
+<div class="section level2">
+<h2 id="support">Support<a class="anchor" aria-label="anchor" href="#support"></a>
+</h2>
+<p>Feel free to open an issue with any question about this package using
+<a href="https://github.com/pyr-opendatafr/R-Insee-Data" class="external-link uri">https://github.com/pyr-opendatafr/R-Insee-Data</a> Github
+repository</p>
 </div>
   </div>
 
@@ -289,11 +343,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Hadrien Leclerc.</p>
+  <p></p>
+<p>Developed by Hadrien Leclerc.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
@@ -301,6 +357,8 @@
 
   
 
+
+  
 
   </body>
 </html>
