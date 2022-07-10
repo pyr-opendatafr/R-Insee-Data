@@ -81,25 +81,36 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">split_title</span><span class="op">(</span><span class="va">df</span>, <span class="va">title_col_name</span>, <span class="va">pattern</span>, n_split <span class="op">=</span> <span class="st">"max"</span>, lang <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">split_title</span><span class="op">(</span><span class="va">df</span>, <span class="va">title_col_name</span>, <span class="va">pattern</span>, n_split <span class="op">=</span> <span class="st">"max"</span>, lang <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>df</dt>
 <dd><p>a dataframe containing a title column</p></dd>
+
+
 <dt>title_col_name</dt>
 <dd><p>the column name to be splitted, if missing it will be either TITLE_EN</p></dd>
+
+
 <dt>pattern</dt>
 <dd><p>the value by default is stored in the package and it is advised to use it, but in some cases it is useful to use one's pattern</p></dd>
+
+
 <dt>n_split</dt>
 <dd><p>number of new columns, by default the maximum is chosen</p></dd>
+
+
 <dt>lang</dt>
 <dd><p>by default it returns both the French and the English title provided by INSEE</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>the same dataframe with the title column splitted</p>
+    
+
+<p>the same dataframe with the title column splitted</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -108,20 +119,20 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># quarterly payroll enrollment in the construction sector</span></span>
-<span class="r-in"><span class="va">data_raw</span> <span class="op">=</span> <span class="fu"><a href="get_insee_idbank.html">get_insee_idbank</a></span><span class="op">(</span><span class="st">"001577236"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># quarterly payroll enrollment in the construction sector</span></span></span>
+<span class="r-in"><span><span class="va">data_raw</span> <span class="op">=</span> <span class="fu"><a href="get_insee_idbank.html">get_insee_idbank</a></span><span class="op">(</span><span class="st">"001577236"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #000000;">1/1 - Data download &amp; Dataframe build :</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Data cached : /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp7WhQxB/797a46473c738b8d386d20866b100aac.rds</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Data cached : /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpBWVzkA/797a46473c738b8d386d20866b100aac.rds</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">data</span> <span class="op">=</span> <span class="va">data_raw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">split_title</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">=</span> <span class="va">data_raw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">split_title</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -136,7 +147,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
