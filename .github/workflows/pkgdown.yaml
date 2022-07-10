@@ -40,6 +40,7 @@ jobs:
           install.packages("rgdal")
           install.packages("geosphere")
           install.packages("broom")
+          install.packages("terra")
           install.packages("viridis")
           install.packages("mapproj")
         shell: Rscript {0}
