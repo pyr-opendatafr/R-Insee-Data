@@ -7,6 +7,7 @@
 ^docs$
 ^pkg_tools.R$
 ^build_idbank_list.R$
+^update_idbank_list_internal.R$
 ^cran-comments.md$
 ^README.Rmd$
 ^CRAN-RELEASE$
