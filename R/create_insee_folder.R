@@ -7,7 +7,7 @@ create_insee_folder = function(){
 
   for(ifile in 1:length(list_folders)){
     if(!file.exists(list_folders[ifile])){
-      dir_creation = dir.create(list_folders[ifile])
+      dir_creation = dir.create(list_folders[ifile], recursive=TRUE)
     }
   }
 
