@@ -1,5 +1,5 @@
 pandoc: 2.7.3
-pkgdown: 2.0.5
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   insee: insee.html
@@ -9,7 +9,7 @@ articles:
   v5_pop-vignettes: v5_pop-vignettes.html
   v6_pop_map-vignettes: v6_pop_map-vignettes.html
   v7_death_birth-vignettes: v7_death_birth-vignettes.html
-last_built: 2022-07-14T17:27Z
+last_built: 2022-08-20T10:16Z
 urls:
   reference: https://pyr-opendatafr.github.io/R-Insee-Data/reference
   article: https://pyr-opendatafr.github.io/R-Insee-Data/articles
