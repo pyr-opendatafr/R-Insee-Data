@@ -1,3 +1,8 @@
+# insee 1.1.5
+* ssl certificate bug fix
+* dataset list stored internally as backup
+* internal idbank list updated
+
 # insee 1.1.4
 
 * advanced proxy settings are set up
