@@ -84,7 +84,7 @@ get_insee = function(link, step = "1/1"){
 
       s = try(saveRDS(data_final, file = file_cache), silent = TRUE)
 
-      if(class(s) != "try-error"){
+      if(!"try-error" %in% class(s)){
         if(insee_download_verbose){
           msg = sprintf("Data cached : %s\n", file_cache)
 

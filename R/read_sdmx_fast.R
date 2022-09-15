@@ -10,9 +10,8 @@ read_sdmx_fast = function(link, step = "1/1"){
 
   data = try(readsdmx::read_sdmx(link, quiet = TRUE), silent = TRUE)
 
-  if(class(data) != "try-error"){
+  if(!"try-error" %in% class(data)){
     if(nrow(data) > 0){
-      # data$OBS_VALUE = as.numeric(data$OBS_VALUE)
 
       data = dplyr::group_by(.data = data, .data$IDBANK)
 

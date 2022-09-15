@@ -49,7 +49,7 @@ dwn_idbank_file = function(){
   filecon <- file(zipF, "wb")
 
   #write data contents to the temporary file
-  writeBin(resp$content, filecon)
+  writeBin(response$content, filecon)
 
   #close the connection
   close(filecon)

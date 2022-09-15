@@ -23,19 +23,19 @@ get_dataset_dimension = function(dataset){
     option_extra = Sys.getenv("INSEE_download_option_extra")
     option_proxy = Sys.getenv("INSEE_download_option_proxy")
     option_auth = Sys.getenv("INSEE_download_option_auth")
-    
+
     if(option_extra == ""){
       response = try(httr::GET(link), silent = TRUE)
     }else{
-      
+
       proxy = httr::use_proxy(url = option_proxy,
                               port = as.numeric(option_port),
                               auth = option_auth)
-      
+
       response = httr::GET(url = link,
                            config = proxy)
     }
-    
+
     response_content = try(httr::content(response, encoding = "UTF-8"), silent = TRUE)
 
     if(!"try-error" %in% class(response_content)){
@@ -45,7 +45,7 @@ get_dataset_dimension = function(dataset){
 
       l = try(data[[1]][["Structures"]][["DataStructures"]][["DataStructure"]][["DataStructureComponents"]][["DimensionList"]])
 
-      if(class(l) != "try-error"){
+      if(!"try-error" %in% class(l)){
         if(!is.null(l)){
 
           list_dimension = unlist(lapply(1:length(l),
