@@ -11,6 +11,9 @@ read_sdmx_slow = function(link, step = "1/1"){
   option_proxy = Sys.getenv("INSEE_download_option_proxy")
   option_auth = Sys.getenv("INSEE_download_option_auth")
   
+  # ssl certificate check disabled
+  httr::set_config(httr::config(ssl_verifypeer = FALSE))
+  
   if(option_extra == ""){
     response = try(httr::GET(link), silent = TRUE)
   }else{
