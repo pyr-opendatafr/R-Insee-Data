@@ -16,21 +16,52 @@ dwn_idbank_file = function(){
   option_proxy = Sys.getenv("INSEE_download_option_proxy")
   option_auth = Sys.getenv("INSEE_download_option_auth")
 
-  if (option_extra == ""){
-    dwn = utils::download.file(file_to_dwn, temp_file,
-                               mode = option_mode, quiet = TRUE)
+  # if (option_extra == ""){
+  #   dwn = utils::download.file(file_to_dwn, temp_file,
+  #                              mode = option_mode, quiet = TRUE)
+  # }else{
+  #   dwn = utils::download.file(file_to_dwn, temp_file,
+  #                              method = option_method,
+  #                              mode = option_mode,
+  #                              extra = option_extra,
+  #                              quiet = TRUE)
+  # }
+  httr::set_config(httr::config(ssl_verifypeer = FALSE))
+
+  if(option_extra == ""){
+    response = try(httr::GET(file_to_dwn), silent = TRUE)
   }else{
-    dwn = utils::download.file(file_to_dwn, temp_file,
-                               method = option_method,
-                               mode = option_mode,
-                               extra = option_extra,
-                               quiet = TRUE)
+
+    proxy = httr::use_proxy(url = option_proxy,
+                            port = as.numeric(option_port),
+                            auth = option_auth)
+
+    response = httr::GET(url = file_to_dwn,
+                         config = proxy)
   }
 
+  #create temporary directory for storing and unzipping file
+  td <- tempdir()
 
-  uzp = utils::unzip(temp_file, exdir = insee_data_dir)
+  #open connection to write contents
+  zipF <- paste0(td, "//idbank_file.zip")
 
-  mapping_file = file.path(insee_data_dir, list.files(insee_data_dir, pattern = mapping_file_pattern)[1])
+  filecon <- file(zipF, "wb")
+
+  #write data contents to the temporary file
+  writeBin(resp$content, filecon)
+
+  #close the connection
+  close(filecon)
+
+  uzp = utils::unzip(zipF, exdir = insee_data_dir)
+  potential_file = list.files(insee_data_dir, pattern = "correspondance_idbank_dimensionfewf")[1]
+
+  if (is.na(potential_file)){
+    potential_file = list.files(insee_data_dir)[1]
+  }
+
+  mapping_file = file.path(insee_data_dir, potential_file)
 
   mapping = utils::read.delim(mapping_file, sep = mapping_file_sep,
                               stringsAsFactors = F)
