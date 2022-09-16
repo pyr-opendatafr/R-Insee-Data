@@ -60,25 +60,27 @@ get_insee = function(link, step = "1/1"){
     }
 
     # by default the internal parser is used, if it fails the readsdmx parser is used
-    if(!use_read_sdmx_fast_first){
-      data_final = read_sdmx_slow(link, step)
+    # if(!use_read_sdmx_fast_first){
+    #   data_final = read_sdmx_slow(link, step)
+    #
+    #   if(use_backup_parser){
+    #     if(is.null(data_final)){
+    #       data_final = read_sdmx_fast(link, step)
+    #     }
+    #   }
+    #
+    # }else{
+    #   data_final = read_sdmx_fast(link, step)
+    #
+    #   if(use_backup_parser){
+    #     if(is.null(data_final)){
+    #       data_final = read_sdmx_slow(link, step)
+    #     }
+    #   }
+    #
+    # }
 
-      if(use_backup_parser){
-        if(is.null(data_final)){
-          data_final = read_sdmx_fast(link, step)
-        }
-      }
-
-    }else{
-      data_final = read_sdmx_fast(link, step)
-
-      if(use_backup_parser){
-        if(is.null(data_final)){
-          data_final = read_sdmx_slow(link, step)
-        }
-      }
-
-    }
+    data_final = read_sdmx_slow(link, step)
 
     if(!is.null(data_final)){
 

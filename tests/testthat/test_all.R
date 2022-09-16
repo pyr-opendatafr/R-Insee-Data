@@ -167,7 +167,7 @@ test_that("output tests",{
 
   expect_is(get_insee_dataset("IPC-2015"), "NULL")
   expect_is(read_sdmx_slow(link), "NULL")
-  expect_is(read_sdmx_fast(link), "NULL")
+  # expect_is(read_sdmx_fast(link), "NULL")
 
   # columns name and fixed order
   link = "https://bdm.insee.fr/series/sdmx/data/CLIMAT-AFFAIRES"
