@@ -109,8 +109,8 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>The <a href="https://CRAN.R-project.org/package=insee" class="external-link">insee</a> package gathers tools to easily download data and metadata from <a href="https://www.insee.fr/en/information/2512785" class="external-link">insee BDM database</a>.</p>
-<p>It uses SDMX queries under the hood. Have a look at the detailed <a href="https://www.insee.fr/en/information/2868055" class="external-link">SDMX webservice page</a>.</p>
+<p>The <a href="https://CRAN.R-project.org/package=insee" class="external-link">insee</a> package gathers tools to easily download data and metadata from insee BDM database.</p>
+<p>It uses SDMX queries under the hood. Have a look at the detailed SDMX webservice page on insee.fr.</p>
 <p>The first version of the package was published on CRAN 2020-07-29.</p>
 <div class="section level3">
 <h3 id="proxy-issues">Proxy issues<a class="anchor" aria-label="anchor" href="#proxy-issues"></a>
@@ -158,14 +158,14 @@
 <div class="section level3">
 <h3 id="datasets-list">Datasets List<a class="anchor" aria-label="anchor" href="#datasets-list"></a>
 </h3>
-<p><a href="https://www.insee.fr/en/information/2512785" class="external-link">INSEE BDM database</a> offers more than 200 Datasets. The <code><a href="../reference/get_dataset_list.html">get_dataset_list()</a></code> function returns the datasets catalogue :</p>
+<p>INSEE BDM database offers more than 200 Datasets. The <code><a href="../reference/get_dataset_list.html">get_dataset_list()</a></code> function returns the datasets catalogue :</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">insee_dataset</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_dataset_list.html">get_dataset_list</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="series-keys-list">Series Keys List<a class="anchor" aria-label="anchor" href="#series-keys-list"></a>
 </h3>
-<p><a href="https://www.insee.fr/en/information/2512785" class="external-link">INSEE BDM database</a> currently offers more than 150 000 series. The <code>get_idbank_list</code> function returns the series catalogue from a dataset name.</p>
+<p>INSEE BDM database currently offers more than 150 000 series. The <code>get_idbank_list</code> function returns the series catalogue from a dataset name.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">idbank_list</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_idbank_list.html">get_idbank_list</a></span><span class="op">(</span><span class="st">'BALANCE-PAIEMENTS'</span><span class="op">)</span></span></code></pre></div>
 </div>
