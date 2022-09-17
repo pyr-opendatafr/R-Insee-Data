@@ -18,7 +18,7 @@ The insee package contains tools to easily download data and metadata from INSEE
 
 Using embedded SDMX queries, get the data of more than 150 000 INSEE series.
 
-Have a look at the detailed SDMX web service page with the following [link](https://www.insee.fr/en/information/2868055).
+Have a look at the detailed SDMX web service page on insee.fr.
 
 This package is a contribution to reproducible research and public data transparency. It benefits from the developments made by INSEE's teams working on APIs.
 
