@@ -27,6 +27,7 @@ dwn_idbank_file = function(){
   #                              quiet = TRUE)
   # }
   httr::set_config(httr::config(ssl_verifypeer = FALSE))
+  # file_to_dwn = "https://www.insee.fr/en/statistiques/fichier/2868055/202209_correspondance_idbank_dimension.zip"
 
   if(option_extra == ""){
     response = try(httr::GET(file_to_dwn), silent = TRUE)
@@ -40,11 +41,16 @@ dwn_idbank_file = function(){
                          config = proxy)
   }
 
+  # trigger error
+  if (response$status_code != 200){
+    trigger_error = "1" + "1"
+  }
+
   #create temporary directory for storing and unzipping file
   td <- tempdir()
 
   #open connection to write contents
-  zipF <- paste0(td, "//idbank_file.zip")
+  zipF <- paste0(td, "/idbankfile.zip")
 
   filecon <- file(zipF, "wb")
 
@@ -55,7 +61,7 @@ dwn_idbank_file = function(){
   close(filecon)
 
   uzp = utils::unzip(zipF, exdir = insee_data_dir)
-  potential_file = list.files(insee_data_dir, pattern = "correspondance_idbank_dimensionfewf")[1]
+  potential_file = list.files(insee_data_dir, pattern = "correspondance_idbank_dimension")[1]
 
   if (is.na(potential_file)){
     potential_file = list.files(insee_data_dir)[1]
@@ -76,6 +82,7 @@ dwn_idbank_files = function(){
   if ("try-error" %in% class(data)){
 
     curr_year = as.numeric(substr(Sys.Date(), 1, 4))
+    curr_month = as.character(substr(Sys.Date(), 6, 7))
     last_year = curr_year - 1
 
     months_char = c()
@@ -87,7 +94,7 @@ dwn_idbank_files = function(){
       }
     }
 
-    dates_pattern_list = c(paste0(curr_year, months_char), paste0(last_year, months_char))
+    dates_pattern_list = c(paste0(curr_year, curr_month), paste0(curr_year, months_char), paste0(last_year, months_char))
     files_pattern = paste0(dates_pattern_list, "_correspondance_idbank_dimension")
     files_dwn = paste0("https://www.insee.fr/en/statistiques/fichier/2868055/" , files_pattern, '.zip')
 
