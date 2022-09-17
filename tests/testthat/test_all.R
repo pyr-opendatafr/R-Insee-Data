@@ -80,8 +80,8 @@ test_that("class tests",{
   expect_is(search_insee(""), "data.frame")
   expect_is(search_insee(NULL), "data.frame")
 
-  Sys.setenv("INSEE_download_option_idbank_list" = "a")
-  expect_error(download_idbank_list(label = TRUE))
+  # Sys.setenv("INSEE_download_option_idbank_list" = "a")
+  # expect_error(download_idbank_list(label = TRUE))
   # expect_is(download_idbank_list(dataset = "CNA-2010-TOF", label = TRUE), "data.frame")
   # expect_warning(download_idbank_list("a"))
 

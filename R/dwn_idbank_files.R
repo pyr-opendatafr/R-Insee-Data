@@ -94,9 +94,14 @@ dwn_idbank_files = function(){
       }
     }
 
+    idbank_file_env = Sys.getenv("INSEE_idbank_dataset_path")
+    pattern_file_env = Sys.getenv("INSEE_idbank_dataset_file")
+
     dates_pattern_list = c(paste0(curr_year, curr_month), paste0(curr_year, months_char), paste0(last_year, months_char))
     files_pattern = paste0(dates_pattern_list, "_correspondance_idbank_dimension")
+    files_pattern = c(pattern_file_env, files_pattern)
     files_dwn = paste0("https://www.insee.fr/en/statistiques/fichier/2868055/" , files_pattern, '.zip')
+    files_dwn = c(idbank_file_env, files_dwn)
 
     i = 1
 
