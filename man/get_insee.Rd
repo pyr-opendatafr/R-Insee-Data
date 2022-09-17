@@ -26,8 +26,6 @@ The user can disable the download display in the console with the following comm
 Sys.setenv(INSEE_download_verbose = "FALSE").
 The use of cached data can be disabled with : Sys.setenv(INSEE_no_cache_use = "TRUE").
 All queries are printed in the console with this command: Sys.setenv(INSEE_print_query = "TRUE").
-The RapidXML C++ library is used as a backup thanks to the readsdmx package.
-It can be used instead of the internal parser with this command : Sys.setenv(INSEE_read_sdmx_fast = "TRUE")
 }
 \examples{
 \donttest{

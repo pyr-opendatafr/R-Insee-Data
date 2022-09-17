@@ -5,7 +5,7 @@ Version: 1.1.5
 Authors@R: 
   c(person("Hadrien", "Leclerc", email = "leclerc.hadrien@gmail.com", role = c("aut", "cre")),
     person("INSEE", role = "cph"))
-Description: Using embedded sdmx queries, get the data of more than 150 000 insee series from bdm database. Have a look at the detailed sdmx web service page with the following link : <https://www.insee.fr/en/information/2868055>.
+Description: Using embedded sdmx queries, get the data of more than 150 000 insee series from bdm database. Have a look at the detailed sdmx web service page on insee.fr.
 URL: https://pyr-opendatafr.github.io/R-Insee-Data/
 Encoding: UTF-8
 LazyData: false
@@ -37,6 +37,6 @@ Suggests:
     testthat,
     covr,
     png
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Depends: 
     R (>= 2.10)
