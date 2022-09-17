@@ -42,9 +42,9 @@ library(prettydoc)
 
 # Introduction
 
-The [insee](https://CRAN.R-project.org/package=insee) package gathers tools to easily download data and metadata from [insee BDM database](https://www.insee.fr/en/information/2512785). 
+The [insee](https://CRAN.R-project.org/package=insee) package gathers tools to easily download data and metadata from insee BDM database. 
 
-It uses SDMX queries under the hood. Have a look at the detailed [SDMX webservice page](https://www.insee.fr/en/information/2868055).
+It uses SDMX queries under the hood. Have a look at the detailed SDMX webservice page on insee.fr.
 
 The first version of the package was published on CRAN 2020-07-29.
 
