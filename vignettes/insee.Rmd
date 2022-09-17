@@ -96,7 +96,7 @@ Series have two identifiers the SDMX identifier and the so called idbank. Both c
 
 ## Datasets List
 
-[INSEE BDM database](https://www.insee.fr/en/information/2512785) offers more than 200 Datasets. The <code>get_dataset_list()</code> function returns the datasets catalogue :
+INSEE BDM database offers more than 200 Datasets. The <code>get_dataset_list()</code> function returns the datasets catalogue :
 
 ```{r, message = FALSE, warning = FALSE, eval = FALSE}
 insee_dataset = get_dataset_list() 
@@ -114,7 +114,7 @@ insee_dataset %>%
 
 ## Series Keys List
 
-[INSEE BDM database](https://www.insee.fr/en/information/2512785) currently offers more than 150 000 series. The <code>get_idbank_list</code> function returns the series catalogue from a dataset name.
+INSEE BDM database currently offers more than 150 000 series. The <code>get_idbank_list</code> function returns the series catalogue from a dataset name.
 
 ```{r, message=FALSE,warning=FALSE,eval=FALSE}
 idbank_list = get_idbank_list('BALANCE-PAIEMENTS')
