@@ -1,7 +1,7 @@
 
 #' @noRd
 .onLoad <- function(libname, pkgname){
-
+  #
   # options(download.file.method="curl", download.file.extra="-k -L")
 
   Sys.setenv(INSEE_sdmx_link_codelist = "https://www.bdm.insee.fr/series/sdmx/codelist/FR1")
