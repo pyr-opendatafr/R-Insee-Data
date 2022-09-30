@@ -37,6 +37,6 @@
   Sys.setenv(INSEE_download_option_auth = "")
 
   # if different from the default value, it makes an error in create_insee_folder function
-  # and all metadata files are stored in tempdir
+  # and all metadata files are stored in tempdir #
   Sys.setenv(INSEE_metadata_folder = "")
 }
