@@ -43,22 +43,22 @@ search_insee = function(pattern = '.*'){
     # filter the dataset list no matter the cases
     dataset_selected = dplyr::filter_at(
       .tbl = dataset_list,
-      .vars = dplyr::vars(.data$Name.en, .data$Name.fr, .data$Name.fr_accent),
+      .vars = dplyr::vars("Name.en", "Name.fr", "Name.fr_accent"),
       .vars_predicate = dplyr::any_vars(stringr::str_detect(.data$.,
                                                             stringr::regex(pattern, ignore_case = TRUE))))
 
-    dataset_selected = dplyr::select(.data = dataset_selected, -.data$Name.fr_accent)
+    dataset_selected = dplyr::select(.data = dataset_selected, -"Name.fr_accent")
 
 
     idbank_list_search = dplyr::select(.data = idbank_list_internal,
-                                       .data$nomflow, .data$idbank, .data$title_fr, .data$title_en)
+                                       "nomflow", "idbank", "title_fr", "title_en")
 
     idbank_list_search = dplyr::mutate(.data = idbank_list_search,
-                                       stop_var = dplyr::case_when(stringr::str_detect(title_en,
+                                       stop_var = dplyr::case_when(stringr::str_detect(.data$title_en,
                                                                                        stringr::regex('stopped series', ignore_case = TRUE)) ~ 1,
                                                                    TRUE ~ 0))
 
-    idbank_list_search = dplyr::arrange(.data = idbank_list_search, .data$stop_var)
+    idbank_list_search = dplyr::arrange(.data = idbank_list_search, "stop_var")
 
     idbank_list_search = dplyr::mutate(.data = idbank_list_search,
                                        title_fr_accent = iconv(.data$title_fr,
@@ -66,24 +66,24 @@ search_insee = function(pattern = '.*'){
 
     idbank_list_search = dplyr::filter_at(
       .tbl = idbank_list_search,
-      .vars = dplyr::vars(.data$title_en, .data$title_fr, .data$title_fr_accent),
+      .vars = dplyr::vars("title_en", "title_fr", "title_fr_accent"),
       .vars_predicate = dplyr::any_vars(stringr::str_detect(.data$.,
                                                             stringr::regex(pattern, ignore_case = TRUE))))
 
     idbank_list_search = dplyr::select(.data = idbank_list_search,
-                                       -.data$title_fr_accent, -.data$stop_var)
+                                       -"title_fr_accent", -"stop_var")
 
     idbank_list_search = dplyr::rename(.data = idbank_list_search,
-                                       id = .data$idbank)
+                                       id = "idbank")
 
     dataset_selected = dplyr::rename(.data = dataset_selected,
-                                     title_fr = .data$Name.fr,
-                                     title_en = .data$Name.en)
+                                     title_fr = "Name.fr",
+                                     title_en = "Name.en")
 
     search_results = dplyr::bind_rows(dataset_selected, idbank_list_search)
 
     search_results = dplyr::select(.data = search_results,
-                                   .data$nomflow, .data$id, .data$title_fr, .data$title_en)
+                                   "nomflow", "id", "title_fr", "title_en")
 
     file_warning_search_data = file.path(tempdir(), paste0(openssl::md5("search_data"), ".rds"))
 
