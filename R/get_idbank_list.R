@@ -75,7 +75,7 @@ get_idbank_list = function(
       dataset_selected = which(dataset %in% dataset_list)
 
       if(length(dataset_selected) == 0){
-        warning("None dataset provided is among INSEE's datasets \nGet the list with get_dataset_list()")
+        warning("Check dataset provided is among INSEE's datasets \nGet the list with get_dataset_list()")
         return(NULL)
       }else{
         dataset = dataset[dataset_selected]

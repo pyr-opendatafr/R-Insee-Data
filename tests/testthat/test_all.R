@@ -48,14 +48,14 @@ test_that("class tests",{
   # expect_equal(any(class(get_insee(insee_query)) == 'data.frame'), TRUE)
   # Sys.setenv(INSEE_read_sdmx_fast = "FALSE")
 
-  expect_is(get_insee(), "NULL")
+  expect_warning(expect_is(get_insee(), "NULL"))
   expect_is(get_insee(""), "NULL")
 
   expect_is(get_insee_idbank(idbank_test1), "data.frame")
   expect_is(get_insee_idbank(), "NULL")
   expect_is(get_insee_idbank(character(0)), "NULL")
 
-  expect_is(get_insee_dataset(), "NULL")
+  expect_warning(expect_is(get_insee_dataset(), "NULL"))
   expect_is(get_insee_dataset("CNA-2014-CPEB",
                               filter = "A.CNA_CPEB.A38-CB.VAL.D39.VALEUR_ABSOLUE.FE.EUROS_COURANTS.BRUT",
                               lastNObservations = 1), "data.frame")
@@ -88,7 +88,7 @@ test_that("class tests",{
   expect_is(get_column_title("CNA-2014-CONSO-MEN"), "data.frame")
   expect_is(get_column_title("CNA-2014-CONSO-MEN"), "data.frame")
   expect_is(get_column_title(), "data.frame")
-  expect_is(get_column_title("a"), "NULL")
+  expect_warning(expect_is(get_column_title("a"), "NULL"))
 
   expect_is(get_dataset_dimension("a"), "NULL")
 
@@ -157,7 +157,7 @@ test_that("output tests",{
   expect_equal("data.frame" %in% class(get_insee_idbank("001769682")), TRUE)
   Sys.setenv("INSEE_no_cache_use" = "FALSE")
 
-  expect_equal(is.null(get_idbank_list("a")), TRUE)
+  expect_warning(expect_equal(is.null(get_idbank_list("a")), TRUE))
 
   # expect_equal("data.frame" %in%
   #                class(read_dataset_metadata(dataset = c("BALANCE-PAIEMENTS", "CLIMAT-AFFAIRES"))), TRUE)
