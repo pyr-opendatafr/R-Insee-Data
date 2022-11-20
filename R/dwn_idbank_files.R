@@ -16,16 +16,6 @@ dwn_idbank_file = function(){
   option_proxy = Sys.getenv("INSEE_download_option_proxy")
   option_auth = Sys.getenv("INSEE_download_option_auth")
 
-  # if (option_extra == ""){
-  #   dwn = utils::download.file(file_to_dwn, temp_file,
-  #                              mode = option_mode, quiet = TRUE)
-  # }else{
-  #   dwn = utils::download.file(file_to_dwn, temp_file,
-  #                              method = option_method,
-  #                              mode = option_mode,
-  #                              extra = option_extra,
-  #                              quiet = TRUE)
-  # }
   httr::set_config(httr::config(ssl_verifypeer = FALSE))
   # file_to_dwn = "https://www.insee.fr/en/statistiques/fichier/2868055/202209_correspondance_idbank_dimension.zip"
 
@@ -61,8 +51,12 @@ dwn_idbank_file = function(){
   close(filecon)
 
   uzp = utils::unzip(zipF, exdir = insee_data_dir)
-  potential_file = list.files(insee_data_dir, pattern = "correspondance_idbank_dimension")[1]
+  
+  potential_file = list.files(insee_data_dir, pattern = mapping_file_pattern)[1]
 
+  if (is.na(potential_file)){
+    potential_file = list.files(insee_data_dir, pattern = "correspondance_idbank_dimension")[1]
+  }
   if (is.na(potential_file)){
     potential_file = list.files(insee_data_dir)[1]
   }
@@ -96,16 +90,20 @@ dwn_idbank_files = function(){
 
     idbank_file_env = Sys.getenv("INSEE_idbank_dataset_path")
     pattern_file_env = Sys.getenv("INSEE_idbank_dataset_file")
-
+    
     dates_pattern_list = c(paste0(curr_year, curr_month), paste0(curr_year, months_char), paste0(last_year, months_char))
-    files_pattern = paste0(dates_pattern_list, "_correspondance_idbank_dimension")
-    files_pattern = c(pattern_file_env, files_pattern)
-    files_dwn = paste0("https://www.insee.fr/en/statistiques/fichier/2868055/" , files_pattern, '.zip')
-    files_dwn = c(idbank_file_env, files_dwn)
-
+    files_pattern0 = paste0(dates_pattern_list, "_correspondance_idbank_dimension")
+    files_pattern = c(pattern_file_env, files_pattern0)
+    
+    files_dwn_fr = paste0("https://www.insee.fr/fr/statistiques/fichier/2862759/" , files_pattern, '.zip')
+    files_dwn_en = paste0("https://www.insee.fr/en/statistiques/fichier/2868055/" , files_pattern, '.zip')
+    
+    files_dwn = c(idbank_file_env, files_dwn_fr, files_dwn_en)
+    files_pattern = c(pattern_file_env, files_pattern, files_pattern)
+    
     i = 1
 
-    while(("try-error" %in% class(data)) & (i <= length(files_pattern))){
+    while(("try-error" %in% class(data)) & (i <= length(files_dwn))){
 
       Sys.setenv(INSEE_idbank_dataset_path = files_dwn[i])
       Sys.setenv(INSEE_idbank_dataset_file = files_pattern[i])
