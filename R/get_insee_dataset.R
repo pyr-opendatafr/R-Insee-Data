@@ -78,22 +78,22 @@ get_insee_dataset <- function(dataset,
       option_extra = Sys.getenv("INSEE_download_option_extra")
       option_proxy = Sys.getenv("INSEE_download_option_proxy")
       option_auth = Sys.getenv("INSEE_download_option_auth")
-      
+
       if(option_extra == ""){
         response = try(httr::GET(link), silent = TRUE)
       }else{
-        
+
         proxy = httr::use_proxy(url = option_proxy,
                                 port = as.numeric(option_port),
                                 auth = option_auth)
-        
+
         response = httr::GET(url = link,
                              config = proxy)
       }
 
       response_content = try(httr::content(response, encoding = "UTF-8"), silent = TRUE)
 
-      if(!"try-error" %in% class(response_content)){
+      if((!"try-error" %in% class(response_content)) & response_content$status == 200){
 
         content_list = xml2::as_list(response_content)
         content_query = content_list$Error$ErrorMessage
@@ -128,6 +128,9 @@ get_insee_dataset <- function(dataset,
           }
 
         }
+      }else{
+        msg = sprintf("\nThe query may be too big, please use the filters")
+        message(crayon::style(msg, "red"))
       }
 
   }

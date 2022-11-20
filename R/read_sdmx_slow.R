@@ -10,22 +10,22 @@ read_sdmx_slow = function(link, step = "1/1"){
   option_extra = Sys.getenv("INSEE_download_option_extra")
   option_proxy = Sys.getenv("INSEE_download_option_proxy")
   option_auth = Sys.getenv("INSEE_download_option_auth")
-  
+
   # ssl certificate check disabled
   httr::set_config(httr::config(ssl_verifypeer = FALSE))
-  
+
   if(option_extra == ""){
     response = try(httr::GET(link), silent = TRUE)
   }else{
-    
+
     proxy = httr::use_proxy(url = option_proxy,
                             port = as.numeric(option_port),
                             auth = option_auth)
-    
+
     response = httr::GET(url = link,
                        config = proxy)
   }
-  
+
 
   if("try-error" %in% class(response)){
     # warning("Wrong query")
@@ -34,7 +34,7 @@ read_sdmx_slow = function(link, step = "1/1"){
 
   response_content = try(httr::content(response, encoding = "UTF-8"), silent = TRUE)
 
-  if(!"try-error" %in% class(response_content)){
+  if((!"try-error" %in% class(response_content)) & response_content$status == 200){
 
     content_list = xml2::as_list(response_content)
     data = tibble::as_tibble(content_list)
@@ -200,6 +200,7 @@ read_sdmx_slow = function(link, step = "1/1"){
     }
   }else{
     data_final = NULL
+    print(response)
     # print(response)
     # stop("Wrong query")
   }
