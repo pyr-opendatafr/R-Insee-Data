@@ -1,4 +1,8 @@
+# insee 1.1.6
+* idbank list download from french and english webpages on insee.fr
+
 # insee 1.1.5
+
 * ssl certificate bug fix
 * dataset list stored internally as backup
 * internal idbank list updated
