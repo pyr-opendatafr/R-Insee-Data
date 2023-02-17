@@ -81,7 +81,13 @@ get_insee_idbank <- function(...,
   }else{
     list_idbank = unlist(list(...))
   }
-
+ 
+  if(class(list_idbank) != "character"){
+    msg = "The idbanks should be characters"
+    message(crayon::style(msg, "red"))
+    return(NULL)
+  }
+    
   list_idbank = unique(list_idbank)
   n_idbank = length(list_idbank)
 
