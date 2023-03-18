@@ -150,16 +150,16 @@ A dimension left empty means all values are selected. To select multiple values 
 <span class="r-in"><span><span class="co">#example 1</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">=</span> <span class="fu">get_insee_dataset</span><span class="op">(</span><span class="st">"IPC-2015"</span>, filter <span class="op">=</span> <span class="st">"M+A.........CVS.."</span>, startPeriod <span class="op">=</span> <span class="st">"2015-03"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #000000;">1/1 - Data download &amp; Dataframe build :</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |=                                                                     |   2%  |                                                                              |========================                                              |  35%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================================| 100%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |==                                                                    |   2%  |                                                                              |========================                                              |  35%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================================| 100%</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Data cached : /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpm0Ie1R/d0cf1283af4323191a1ca24bd0113847.rds</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Data cached : /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp0yEEwV/d0cf1283af4323191a1ca24bd0113847.rds</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">#example 2</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">=</span> <span class="fu">get_insee_dataset</span><span class="op">(</span><span class="st">"IPC-2015"</span>, filter <span class="op">=</span> <span class="st">"A..SO...VARIATIONS_A....BRUT..SO"</span>,</span></span>
 <span class="r-in"><span> includeHistory <span class="op">=</span> <span class="cn">TRUE</span>, updatedAfter <span class="op">=</span> <span class="st">"2017-07-11T08:45:00"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Response [https://bdm.insee.fr/series/sdmx/data/IPC-2015/A..SO...VARIATIONS_A....BRUT..SO?includeHistory=true&amp;updatedAfter=2017-07-11T08:45:00]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Date: 2022-11-29 20:15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Date: 2023-03-18 17:45</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Status: 404</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Content-Type: application/json</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Size: 471 B</span>
@@ -170,7 +170,8 @@ A dimension left empty means all values are selected. To select multiple values 
 <span class="r-msg co"><span class="r-pr">#&gt;</span> In this case, please ask your IT support team to provide you with the proxy server settings</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Then, have a look at the following tutorial to use these settings:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> https://cran.r-project.org/web/packages/insee/vignettes/insee.html</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in response_content$status:</span> $ operator is invalid for atomic vectors</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">The query may be too big, please use the filters</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -187,7 +188,7 @@ A dimension left empty means all values are selected. To select multiple values 
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
