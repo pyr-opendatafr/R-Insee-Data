@@ -93,7 +93,7 @@ get_insee_dataset <- function(dataset,
 
       response_content = try(httr::content(response, encoding = "UTF-8"), silent = TRUE)
 
-      if((!"try-error" %in% class(response_content)) & response_content$status == 200){
+      if((!"try-error" %in% class(response_content)) & response$status != 200){
 
         content_list = xml2::as_list(response_content)
         content_query = content_list$Error$ErrorMessage
