@@ -5,7 +5,7 @@
 #' @return a tibble with the data given as parameter plus the corresponding metadata
 #' @examples
 #' \donttest{
-#' library(tidyverse)
+#' library(magrittr)
 #'
 #' data =
 #'  get_insee_idbank("001694061") %>%

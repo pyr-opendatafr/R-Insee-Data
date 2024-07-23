@@ -27,6 +27,7 @@ Imports:
 Suggests:
     lubridate,
     magrittr,
+    ggplot2,
     prettydoc,
     htmltools,
     kableExtra,

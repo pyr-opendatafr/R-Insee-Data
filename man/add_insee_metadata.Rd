@@ -20,7 +20,7 @@ Add metadata to the raw data obtained from get_insee_idbank or get_insee_dataset
 }
 \examples{
 \donttest{
-library(tidyverse)
+library(magrittr)
 
 data =
  get_insee_idbank("001694061") \%>\%

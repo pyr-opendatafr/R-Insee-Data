@@ -22,7 +22,9 @@
 #'
 #' #example 2 : unemployment data
 #'
-#' library(tidyverse)
+#' library(magrittr)
+#' library(dplyr)
+#' library(ggplot2)
 #'
 #' df_idbank_list_selected =
 #'   get_idbank_list("CHOMAGE-TRIM-NATIONAL") %>%  #unemployment dataset
@@ -34,8 +36,6 @@
 #' unem = get_insee_idbank(idbank_list_selected)
 #'
 #' #example 3 : French GDP growth rate
-#'
-#' library(tidyverse)
 #'
 #' df_idbank_list_selected =
 #'   get_idbank_list("CNT-2014-PIB-EQB-RF") %>%  # Gross domestic product balance
@@ -81,9 +81,9 @@ get_insee_idbank <- function(...,
   }else{
     list_idbank = unlist(list(...))
   }
- 
+
   check_type = list()
-  
+
   if (length(list_idbank) > 0){
     for (i in 1:length(list_idbank)){
       check_type[[length(check_type)+1]] = is.character(list_idbank[i])
@@ -95,7 +95,7 @@ get_insee_idbank <- function(...,
       return(NULL)
     }
   }
-    
+
   list_idbank = unique(list_idbank)
   n_idbank = length(list_idbank)
 

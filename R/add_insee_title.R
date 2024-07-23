@@ -11,7 +11,8 @@
 #' @return the same dataframe but with one or several title columns
 #' @examples
 #' \donttest{
-#'library(tidyverse)
+#'library(magrittr)
+#'library(dplyr)
 #'
 #'idbank_empl =
 #'  get_idbank_list("EMPLOI-SALARIE-TRIM-NATIONAL") %>% #employment

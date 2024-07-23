@@ -28,7 +28,7 @@ The number of separators in the official INSEE title can vary and is not normali
 }
 \examples{
 \donttest{
-library(tidyverse)
+library(magrittr)
 
 # quarterly payroll enrollment in the construction sector
 data_raw = get_insee_idbank("001577236")

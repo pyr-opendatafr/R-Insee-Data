@@ -30,7 +30,8 @@ The number of separators in the official INSEE title can vary and is not normali
 }
 \examples{
 \donttest{
-library(tidyverse)
+library(magrittr)
+library(dplyr)
 
 idbank_empl =
  get_idbank_list("EMPLOI-SALARIE-TRIM-NATIONAL") \%>\% #employment

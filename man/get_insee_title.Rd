@@ -28,7 +28,8 @@ Consequently, it is not advised to use it on the whole idbank dataset, the user 
 title = get_insee_title("010537900")
 
 #example 2 : automotive industry and overall industrial production
-library(tidyverse)
+library(magrittr)
+library(dplyr)
 
 idbank_list_selected =
   get_idbank_list("IPI-2015") \%>\% #industrial production index dataset

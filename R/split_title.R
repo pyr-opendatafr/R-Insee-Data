@@ -9,7 +9,7 @@
 #' @return the same dataframe with the title column splitted
 #' @examples
 #' \donttest{
-#' library(tidyverse)
+#' library(magrittr)
 #'
 #' # quarterly payroll enrollment in the construction sector
 #' data_raw = get_insee_idbank("001577236")

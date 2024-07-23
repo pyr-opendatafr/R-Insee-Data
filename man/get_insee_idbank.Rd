@@ -52,7 +52,9 @@ data = get_insee_idbank("001558315", "010540726")
 
 #example 2 : unemployment data
 
-library(tidyverse)
+library(magrittr)
+library(dplyr)
+library(ggplot2)
 
 df_idbank_list_selected =
   get_idbank_list("CHOMAGE-TRIM-NATIONAL") \%>\%  #unemployment dataset
@@ -64,8 +66,6 @@ idbank_list_selected = df_idbank_list_selected \%>\% pull(idbank)
 unem = get_insee_idbank(idbank_list_selected)
 
 #example 3 : French GDP growth rate
-
-library(tidyverse)
 
 df_idbank_list_selected =
   get_idbank_list("CNT-2014-PIB-EQB-RF") \%>\%  # Gross domestic product balance
