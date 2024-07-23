@@ -58,7 +58,7 @@ test_that("class tests",{
 
   expect_warning(expect_is(get_insee_dataset(), "NULL"))
   expect_is(get_insee_dataset("CNA-2014-CPEB",
-                              filter = "A.CNA_CPEB.A38-CB.VAL.D39.VALEUR_ABSOLUE.FE.EUROS_COURANTS.BRUT",
+                              filter = "A.CNA_CPEB.A38-CB.VAL.D39.VALEUR_ABSOLUE.FE.EUROS_COURANTS.BRUT.",
                               lastNObservations = 1), "data.frame")
   expect_is(get_insee_dataset("IPC-2015", filter = "M+A.........CVS..", startPeriod = "2015-03"), "data.frame")
 
