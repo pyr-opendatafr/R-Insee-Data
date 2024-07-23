@@ -1,7 +1,7 @@
 Package: insee
 Type: Package
 Title: Tools to Easily Download Data from INSEE BDM Database
-Version: 1.1.6
+Version: 1.1.7
 Authors@R: 
   c(person("Hadrien", "Leclerc", email = "leclerc.hadrien@gmail.com", role = c("aut", "cre")),
     person("INSEE", role = "cph"))
@@ -9,7 +9,7 @@ Description: Using embedded sdmx queries, get the data of more than 150 000 inse
 URL: https://pyr-opendatafr.github.io/R-Insee-Data/
 Encoding: UTF-8
 LazyData: false
-License: GPL-3
+License: MIT + file LICENCE
 VignetteBuilder: knitr
 BugReports: https://github.com/pyr-opendatafr/R-Insee-Data/issues
 Imports: 
@@ -25,8 +25,8 @@ Imports:
   openssl,
   rappdirs
 Suggests:
-    tidyverse,
     lubridate,
+    magrittr,
     prettydoc,
     htmltools,
     kableExtra,
@@ -37,6 +37,6 @@ Suggests:
     testthat,
     covr,
     png
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
 Depends: 
     R (>= 2.10)

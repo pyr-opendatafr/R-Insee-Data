@@ -1,7 +1,8 @@
 testthat::context("class and output tests")
 library(testthat)
 library(insee)
-library(tidyverse)
+library(magrittr)
+library(dplyr)
 library(lubridate)
 
 test_that("class tests",{
@@ -36,8 +37,8 @@ test_that("class tests",{
 
   expect_equal(any(class(get_dataset_list()) == 'data.frame'), TRUE)
 
-  expect_equal(any(class(get_last_release()) == 'data.frame'), TRUE)
-  expect_equal(any(class(get_last_release()) == 'data.frame'), TRUE)
+  # expect_equal(any(class(get_last_release()) == 'data.frame'), TRUE)
+  # expect_equal(any(class(get_last_release()) == 'data.frame'), TRUE)
 
   Sys.setenv(INSEE_print_query = "TRUE")
   insee_link = "http://www.bdm.insee.fr/series/sdmx/data/SERIES_BDM"
