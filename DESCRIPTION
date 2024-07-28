@@ -26,7 +26,6 @@ Imports:
   rappdirs
 Suggests:
     lubridate,
-    magrittr,
     ggplot2,
     prettydoc,
     htmltools,

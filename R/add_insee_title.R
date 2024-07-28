@@ -46,7 +46,7 @@ add_insee_title = function(df, n_split, lang = "en", split = TRUE, clean = TRUE)
         }
       }
       if(clean){
-        df = insee::clean_table(df)
+        df = clean_table(df)
       }
     }
   }

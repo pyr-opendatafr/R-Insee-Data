@@ -2,6 +2,7 @@
 * get_last_release is bugged whenever insee's RSS flow fails, function removed
 * licence change from GPL to MIT
 * tidyverse out of the dependencies + subsequent doc update
+* clean_table removed from global functions
 
 # insee 1.1.6
 * idbank list download from french and english webpages on insee.fr

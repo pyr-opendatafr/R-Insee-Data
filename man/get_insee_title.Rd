@@ -30,6 +30,7 @@ title = get_insee_title("010537900")
 #example 2 : automotive industry and overall industrial production
 library(magrittr)
 library(dplyr)
+library(stringr)
 
 idbank_list_selected =
   get_idbank_list("IPI-2015") \%>\% #industrial production index dataset

@@ -19,7 +19,6 @@ vignette: >
 NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")),"true")
 knitr::opts_chunk$set(purl = NOT_CRAN)
 library(insee)
-library(tidyverse)
 
 embed_png <- function(path, dpi = NULL) {
   meta <- attr(png::readPNG(path, native = TRUE, info = TRUE), "info")
@@ -34,7 +33,6 @@ embed_png <- function(path, dpi = NULL) {
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(kableExtra)
-library(magrittr)
 library(htmltools)
 library(prettydoc)
 ```
@@ -45,9 +43,10 @@ embed_png("death_birth.png")
 
 ```{r message=FALSE, warning=FALSE,eval=FALSE}
 
-
 library(insee)
-library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(magrittr)
 
 insee_dataset = get_dataset_list()
 
