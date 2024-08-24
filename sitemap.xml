@@ -1,6 +1,7 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://pyr-opendatafr.github.io/R-Insee-Data/404.html</loc></url>
-<url><loc>https://pyr-opendatafr.github.io/R-Insee-Data/LICENCE.html</loc></url>
+<url><loc>https://pyr-opendatafr.github.io/R-Insee-Data/LICENSE-text.html</loc></url>
+<url><loc>https://pyr-opendatafr.github.io/R-Insee-Data/LICENSE.html</loc></url>
 <url><loc>https://pyr-opendatafr.github.io/R-Insee-Data/articles/index.html</loc></url>
 <url><loc>https://pyr-opendatafr.github.io/R-Insee-Data/articles/insee.html</loc></url>
 <url><loc>https://pyr-opendatafr.github.io/R-Insee-Data/articles/v2_gdp-vignettes.html</loc></url>
