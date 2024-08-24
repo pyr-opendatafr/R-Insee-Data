@@ -9,7 +9,7 @@ Description: Using embedded sdmx queries, get the data of more than 150 000 inse
 URL: https://pyr-opendatafr.github.io/R-Insee-Data/
 Encoding: UTF-8
 LazyData: false
-License: MIT + file LICENCE
+License: MIT + file LICENSE
 VignetteBuilder: knitr
 BugReports: https://github.com/pyr-opendatafr/R-Insee-Data/issues
 Imports: 
